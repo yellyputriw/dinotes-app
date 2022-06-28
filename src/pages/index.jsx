@@ -41,11 +41,14 @@ class NoteApp extends Component {
 
   onArchiveHandler(id) {
     const archivedNote = this.state.notes.find((note) => note.id === id);
-    archivedNote.archived = true;
+    archivedNote.archived = archivedNote.archived ? false : true;
+
+    const notes = this.state.notes.filter((note) => note.id !== id);
+    this.setState({ notes: [...notes, archivedNote] });
   }
 
   onSearchHandler(event) {
-    const noteItem = document.querySelector(".note-item");
+    const noteItem = document.querySelectorAll(".note-item");
     noteItem.forEach((item) => {
       const noteTitle = item.firstChild.firstChild.textContent.toLowerCase();
       if (noteTitle.indexOf(event) !== -1) {
@@ -72,7 +75,10 @@ class NoteApp extends Component {
               />
             ) : (
               <div className="not-found">
-                <h2>Belum Ada Catatan</h2>
+                <h2>
+                  Belum Ada Catatan{" "}
+                  <img src="/images/dinosur.svg" alt="dino" height={24} />
+                </h2>
               </div>
             )}
           </div>

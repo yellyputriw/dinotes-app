@@ -1,6 +1,14 @@
 import { showFormattedDate } from "../utils/showFormatedDate";
 
-const NoteItem = ({ id, title, body, createdAt, onDelete, onArchive }) => {
+const NoteItem = ({
+  id,
+  title,
+  body,
+  createdAt,
+  onDelete,
+  onArchive,
+  isArchive,
+}) => {
   return (
     <div className="note-item">
       <div className="note-item-body">
@@ -9,11 +17,11 @@ const NoteItem = ({ id, title, body, createdAt, onDelete, onArchive }) => {
         <p className="note-body">{body}</p>
       </div>
       <div className="action-button">
-        <button className="note-delete" onClick={() => onDelete(id)}>
+        <button className="note-delete note-btn" onClick={() => onDelete(id)}>
           Hapus
         </button>
-        <button className="note-archive" onClick={() => onArchive(id)}>
-          Arsipkan
+        <button className="note-archive note-btn" onClick={() => onArchive(id)}>
+          {isArchive ? "Pindahkan" : "Arsipkan"}
         </button>
       </div>
     </div>

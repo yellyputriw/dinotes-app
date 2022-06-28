@@ -19,6 +19,7 @@ const NoteList = ({ notes, onDelete, onArchive }) => {
                   createdAt={createdAt}
                   onDelete={onDelete}
                   onArchive={onArchive}
+                  isArchive={false}
                 />
               );
             } else {
@@ -42,6 +43,7 @@ const NoteList = ({ notes, onDelete, onArchive }) => {
                     createdAt={createdAt}
                     onDelete={onDelete}
                     onArchive={onArchive}
+                    isArchive={true}
                   />
                 );
               } else {

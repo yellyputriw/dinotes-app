@@ -58,6 +58,7 @@ class NoteInput extends Component {
               value={this.state.title}
               onChange={this.onTitleChangeEventHandler}
               onKeyUp={this.maxLengthsHandler}
+              required
             />
             <span>
               {this.state.charCount}/{this.maxLength}
@@ -68,6 +69,7 @@ class NoteInput extends Component {
               placeholder="Pesan"
               value={this.state.body}
               onChange={this.onBodyChangeEventHandler}
+              required
             ></textarea>
           </div>
           <button type="submit">Tambah</button>
