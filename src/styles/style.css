@@ -1,0 +1,247 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+}
+
+.note-header {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fffbc1;
+}
+
+.note-header img {
+  padding: 10px 20px;
+  margin-bottom: 4rem;
+}
+
+#content {
+  max-width: 1400px;
+  width: 100%;
+  margin: auto;
+  margin-top: -70px;
+}
+
+.container {
+  padding: 0 35px;
+  padding-bottom: 70px;
+}
+
+.note-input {
+  max-width: 570px;
+  background-color: #fff;
+  padding: 35px;
+  margin: auto;
+  margin-bottom: 4rem;
+  border-radius: 12px;
+  box-shadow: 0 30px 60px 0 rgba(193, 193, 193, 0.4);
+}
+
+.note-input h2 {
+  font-size: 1.3rem;
+  color: #404040;
+  text-align: center;
+  padding: 0 20px 20px 20px;
+  letter-spacing: 0.5px;
+}
+
+.note-input form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.note-input .form-group {
+  width: 100%;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.note-input input,
+.note-input textarea {
+  padding: 5px 15px;
+  font-size: 18px;
+  font-family: "Poppins", sans-serif;
+  background: none;
+  color: #404040;
+  border: 1px solid #ced6e0;
+  border-radius: 5px;
+  box-shadow: none;
+}
+
+.note-input input {
+  height: 50px;
+}
+
+.note-input textarea {
+  height: 6.25rem;
+  resize: none;
+}
+
+.note-input span {
+  margin-top: 8px;
+  color: #404040;
+  font-size: 12px;
+  text-align: right;
+}
+
+.note-input button {
+  width: 100%;
+  height: 55px;
+  background: #069a8e;
+  color: #fff;
+  font-size: 22px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.note-search {
+  max-width: 570px;
+  margin: auto;
+  margin-bottom: 4rem;
+}
+
+.note-search label {
+  display: block;
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-align: center;
+  color: #404040;
+  margin-bottom: 1rem;
+}
+
+.note-search input {
+  width: 100%;
+  height: 45px;
+  padding: 5px 20px;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #404040;
+  border: none;
+  border-radius: 30px;
+  outline: none;
+  box-shadow: 0 2px 5px 1px rgba(64, 60, 67, 0.1);
+}
+
+.note-search input::placeholder {
+  font-size: 1.3rem;
+  transform: scaleX(-1);
+}
+
+.note-wrapper {
+  max-width: 1400px;
+}
+
+.note-wrapper h2 {
+  margin: 0 5rem 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #ced6e0;
+  text-align: center;
+  font-weight: 600;
+}
+
+.note-wrapper h2.note {
+  color: #069a8e;
+}
+
+.note-wrapper h2.archive {
+  color: grey;
+}
+
+.note-list {
+  margin: 0 5rem 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: minmax(min-content, max-content);
+  gap: 2rem;
+}
+
+.note-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 20px;
+  margin-bottom: 1rem;
+  background: #fff;
+  border-radius: 8px;
+  border-left: 4px solid #069a8e;
+  box-shadow: 0px 5px 30px 0px #0000001a;
+}
+
+.note-item h3 {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  margin-bottom: 4px;
+}
+.note-item .note-date {
+  font-size: 12px;
+  margin-bottom: 8px;
+  color: #aaa;
+}
+
+.note-item .note-body {
+  margin-bottom: 10px;
+  font-size: 14px;
+  line-height: 24px;
+  flex: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.action-button {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  border-top: 1px solid #aaa;
+}
+
+.note-delete,
+.note-archive {
+  border: 0;
+  margin-right: 10px;
+  padding: 8px 0;
+  background-color: transparent;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.note-delete {
+  color: #fb0000;
+}
+
+.note-archive {
+  color: #c25400;
+}
+
+.not-found {
+  display: flex;
+  justify-content: center;
+  padding: 4rem 2rem;
+  border: 2px dashed #ccc;
+  border-radius: 12px;
+  width: 570px;
+  margin: auto;
+}
+
+.not-found h2 {
+  color: #aaa;
+}
