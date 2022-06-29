@@ -11,12 +11,8 @@ class NoteApp extends Component {
 
     this.state = {
       notes: getInitialData,
+      search: "",
     };
-
-    this.onAddNoteHandler = this.onAddNoteHandler.bind(this);
-    this.onDeleteHandler = this.onDeleteHandler.bind(this);
-    this.onArchiveHandler = this.onArchiveHandler.bind(this);
-    this.onSearchHandler = this.onSearchHandler.bind(this);
   }
 
   onAddNoteHandler({ title, body }) {
@@ -33,50 +29,59 @@ class NoteApp extends Component {
       ],
     }));
   }
-
-  onDeleteHandler(id) {
+  onDeleteHandler = (id) => {
     const notes = this.state.notes.filter((note) => note.id !== id);
     this.setState({ notes });
-  }
-
-  onArchiveHandler(id) {
+  };
+  onArchiveHandler = (id) => {
     const archivedNote = this.state.notes.find((note) => note.id === id);
     archivedNote.archived = archivedNote.archived ? false : true;
-
     const notes = this.state.notes.filter((note) => note.id !== id);
     this.setState({ notes: [...notes, archivedNote] });
-  }
-
-  onSearchHandler(event) {
-    const noteItem = document.querySelectorAll(".note-item");
-    noteItem.forEach((item) => {
-      const noteTitle = item.firstChild.firstChild.textContent.toLowerCase();
-      if (noteTitle.indexOf(event) !== -1) {
-        item.setAttribute("style", "display: flex");
-      } else {
-        item.setAttribute("style", "display: none");
-      }
-    });
-  }
-
+  };
+  onSearchHandler = (search) => {
+    this.setState({ search: search ?? "" });
+    // const noteItem = document.querySelectorAll(".note-item");
+    // noteItem.forEach((item) => {
+    //   const noteTitle = item.firstChild.firstChild.textContent.toLowerCase();
+    //   if (noteTitle.indexOf(event) !== -1) {
+    //     item.setAttribute("style", "display: flex");
+    //   } else {
+    //     item.setAttribute("style", "display: none");
+    //   }
+    // });
+  };
   render() {
+    const {
+      state,
+      onAddNoteHandler,
+      onSearchHandler,
+      onDeleteHandler,
+      onArchiveHandler,
+    } = this;
+    const { search, notes } = state;
+    let filtered = notes;
+    if (search.length > 0)
+      filtered = notes.filter((note) =>
+        note.title.toLowerCase().includes(search)
+      );
     return (
       <div className="note-app">
         <Header />
         <div id="content">
           <div className="container">
-            <NoteInput addNote={this.onAddNoteHandler} />
-            <Search onSearch={this.onSearchHandler} />
-            {this.state.notes.length !== 0 ? (
+            <NoteInput addNote={onAddNoteHandler} />
+            <Search onSearch={onSearchHandler} />
+            {filtered.length !== 0 ? (
               <NoteList
-                notes={this.state.notes}
-                onDelete={this.onDeleteHandler}
-                onArchive={this.onArchiveHandler}
+                notes={filtered}
+                onDelete={onDeleteHandler}
+                onArchive={onArchiveHandler}
               />
             ) : (
               <div className="not-found">
                 <h2>
-                  Belum Ada Catatan{" "}
+                  Tidak Ada Catatan{" "}
                   <img src="/images/dinosur.svg" alt="dino" height={24} />
                 </h2>
               </div>
@@ -87,5 +92,4 @@ class NoteApp extends Component {
     );
   }
 }
-
 export default NoteApp;
